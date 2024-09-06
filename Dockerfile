@@ -5,15 +5,10 @@ RUN apt-get update && apt-get install -y \
     libv8-dev \
     nodejs
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-RUN echo "source 'https://rubygems.org'\n" > Gemfile && \
-    echo "gem 'therubyracer', '~> 0.12.3'\n" >> Gemfile
-
-RUN bundle config build.libv8 -- --with-system-v8
-RUN bundle config build.therubyracer -- --with-system-v8
-
-RUN bundle install
+RUN gem install libv8 -v '3.16.14.19.1' -- --with-system-v8
+RUN gem install therubyracer -v '0.12.3' -- --with-system-v8
 
 RUN echo "require 'v8'\n" > test_therubyracer.rb && \
     echo "puts 'therubyracer is working!'\n" >> test_therubyracer.rb && \
