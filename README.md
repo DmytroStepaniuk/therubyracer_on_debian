@@ -16,7 +16,7 @@ git clone https://github.com/DmytroStepaniuk/therubyracer_on_debian.git && cd th
 
 # Actual
 
-therubyracer` is not worrking at all. And this is deprecated.
+`therubyracer` is not worrking at all. And this is deprecated.
 
 # Other solutions
 
