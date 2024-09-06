@@ -10,6 +10,9 @@ WORKDIR /usr/src/app
 RUN echo "source 'https://rubygems.org'\n" > Gemfile && \
     echo "gem 'therubyracer', '~> 0.12.3'\n" >> Gemfile
 
+bundle config build.libv8 -- --with-system-v8
+bundle config build.therubyracer -- --with-system-v8
+
 RUN bundle install
 
 RUN echo "require 'v8'\n" > test_therubyracer.rb && \
